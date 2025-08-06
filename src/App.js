@@ -22,9 +22,123 @@ const ICONS = {
   ARROW_RIGHT: "M13.293 6.293L18.586 11.586H3V13.586H18.586L13.293 18.879L14.707 20.293L22.414 12.586L14.707 4.879L13.293 6.293Z",
   CHECK: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z",
   MENU: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z",
+  PHONE: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1v3.5c0 .35-.09.65-.26.93l-2.2 2.2z",
   SPARKLES: "M12 0l1.912 4.088L18 6l-4.088 1.912L12 12l-1.912-4.088L6 6l4.088-1.912L12 0zm-6 14l1.912 4.088L12 20l-4.088 1.912L6 26l-1.912-4.088L0 20l4.088-1.912L6 14z",
   CLOSE: "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z",
 };
+
+const experiences = [
+    {
+        company: "Project44",
+        role: "Software Development Engineer",
+        duration: "Sept 2024 - Present",
+        description: [
+            "Spearheaded critical optimizations for Mapbox usage, resulting in a stunning 73% reduction in operational costs and significantly boosting system efficiency.",
+            "Developed a robust Exception Service, providing near real-time exception visibility by dynamically associating them with relevant shipments, and enhancing critical Root Cause Analysis capabilities.",
+            "Built backend services to implement and process saved views, successfully delivering an upsell component that generated over $300K in revenue growth.",
+            "Designed seamless MO-AI integration with P44 MO Insights, providing real-time weather impact tracking for a significant portion of shipments and slashing customer support inquiries by 30%.",
+            "Drove the development of AI-Sentinel, an intelligent shipment exception tracker that automated Zendesk workflows and triggered carrier notifications (calls/SMS) upon exception detection, leading to a 25% decrease in customer inquiries and a 15% boost in customer satisfaction.",
+            "Spearheaded the codebase migration from Node.js 14 to Node.js 20, guaranteeing 100% feature compatibility and enhanced performance, while establishing long-term support and reducing tech debt by 15%."
+        ],
+        techStack: ["Nest.js", "Java", "Spring boot", "React.js", "MongoDB", "Kafka", "Snowflake", "Elastic search", "Redis"]
+    },
+    {
+        company: "Restroworks",
+        role: "Software Development Engineer",
+        duration: "Oct 2022 - Aug 2024",
+        description: [
+            "Point of sale: Built a multi-tenant POS system integrating AWS (SQS, MSK, Lambda) and microservices, optimizing bulk data processing (20% faster).",
+            "Logging System: Architected a centralized logging system leveraging Kafka, Fluentd, and Elasticsearch to process SysLogs/Nginx logs, improving data analysis efficiency by 40% and slashing manual effort by 80%.",
+            "Analytics and Reporting: Optimized report generation using MongoDB aggregations, achieving a 3x improvement in delivery speed. Implemented Redis caching for efficient rate limiting.",
+            "Internal Ticket App: Constructed a queue microservice and auto-ticket assignment, managing 200 tickets/day with 100% event capture."
+        ],
+        techStack: ["React.js", "Node.js", "MongoDB", "Kafka", "SQS", "AWS Lambda", "EC2", "S3", "Docker", "Java", "Fluentd"]
+    },
+    {
+        company: "Attentioun",
+        role: "Software Development Engineer Intern",
+        duration: "Jun 2022 - Oct 2022",
+        description: [
+            "End-to-End Feature Development & UI/UX Excellence: Drove the creation and optimization of over 10 dynamic web pages and two core application components (Story, Profile) by integrating multiple APIs and implementing five major features with ReactJS and Redux Saga, translating complex requirements into intuitive, high-engagement user interfaces.",
+            "Streamlined Collaborative Development: Boosted development velocity and code quality for a 15-person team by implementing robust version control workflows using AWS CodeCommit, enhancing collaboration and efficiency."
+        ],
+        techStack: ["React.js", "Redux.js", "MongoDB", "NodeJS", "Redux saga", "AWS", "TailwindCSS"]
+    }
+];
+
+const Experience = () => (
+    <section id="experience" className="py-24">
+        <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900">Work Experience</h2>
+            <p className="text-slate-600 mt-2">My professional journey so far.</p>
+        </div>
+        <div className="max-w-3xl mx-auto">
+            <div className="relative border-l-2 border-blue-200">
+                                {experiences.map((exp, index) => (
+                    <div key={index} className="mb-10 ml-6">
+                        <span className={`absolute flex items-center justify-center w-6 h-6 ${theme.bg} rounded-full -left-3 ring-8 ring-white`}>
+                            <Icon path={ICONS.BRIEFCASE} className="w-3 h-3 text-white" />
+                        </span>
+                        <h3 className="flex items-center mb-1 text-lg font-semibold text-slate-900">
+                            {exp.company}
+                        </h3>
+                        <time className="block mb-2 text-sm font-normal leading-none text-slate-500">{exp.duration} &bull; {exp.role}</time>
+                        <div className="text-base font-normal text-slate-600">
+                            {Array.isArray(exp.description) ? (
+                                <ul className="list-disc list-inside space-y-2 mt-2">
+                                    {exp.description.map((point, i) => <li key={i}>{point}</li>)}
+                                </ul>
+                            ) : (
+                                <p>{exp.description}</p>
+                            )}
+                            {exp.techStack && (
+                                <div className="mt-4">
+                                    <p className="font-semibold text-sm text-slate-800 mb-2">Tech Stack:</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {exp.techStack.map(tech => (
+                                            <span key={tech} className={`${theme.tagBg} ${theme.tagText} text-xs font-medium px-2 py-1 rounded-full`}>{tech}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+);
+
+const PersonalDetails = () => (
+    <section id="details" className="py-24">
+        <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-900">Connect With Me</h2>
+            <p className="text-slate-600 mt-2">Find me on social media or download my resume.</p>
+        </div>
+        <div className="max-w-4xl mx-auto bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                {/* Social Links */}
+                <div className="flex space-x-6 text-3xl text-slate-500">
+                    <a href="https://github.com/amogh-nagar" target="_blank" rel="noopener noreferrer" className={theme.hover}><Icon path={ICONS.GITHUB} /></a>
+                    <a href="https://www.linkedin.com/in/amoghnagar/" target="_blank" rel="noopener noreferrer" className={theme.hover}><Icon path={ICONS.LINKEDIN} /></a>
+                    <a href="https://twitter.com/amogh_nagar" target="_blank" rel="noopener noreferrer" className={theme.hover}><Icon path={ICONS.TWITTER} /></a>
+                </div>
+                {/* Contact and Resume */}
+                <div className="flex flex-col sm:flex-row items-center gap-6">
+                     <div className="flex items-center">
+                        <Icon path={ICONS.PHONE} className={`w-6 h-6 ${theme.text} mr-2`} />
+                        <span className="text-slate-700 text-lg">8383920621</span>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1nggwKa5ZBvUCLB1V0RG9URJinnYMn-3N/view?usp=sharing" className={`${theme.bg} text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity shadow-sm flex items-center`}>
+                        <Icon path={ICONS.DOWNLOAD} className="w-5 h-5 mr-2" />
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+);
+
 
 // Project data
 const projects = [
@@ -97,6 +211,7 @@ const Header = () => {
         <a href="#" className="text-xl font-bold text-slate-900">Amogh Nagar</a>
         <div className="hidden md:flex space-x-8 items-center">
           <a href="#about" className={`text-slate-600 ${theme.hover} transition-colors`}>About</a>
+           <a href="#experience" className={`text-slate-600 ${theme.hover} transition-colors`}>Experience</a>
           <a href="#projects" className={`text-slate-600 ${theme.hover} transition-colors`}>Projects</a>
           <a href="#contact" className={`text-slate-600 ${theme.hover} transition-colors`}>Contact</a>
         </div>
@@ -185,7 +300,7 @@ const ProjectCard = ({ project }) => {
     Highlight the key skills demonstrated and the potential impact of the project. Do not use markdown.`;
 
     try {
-      const apiKey = ""; 
+      const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
       
       const response = await fetch(apiUrl, {
@@ -311,6 +426,8 @@ export default function App() {
       <main className="container mx-auto px-6">
         <Hero />
         <About />
+        <Experience />
+        <PersonalDetails />
         <Projects />
         <Contact />
       </main>
