@@ -245,7 +245,7 @@ const Hero = () => (
         I'm a Software Development Engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products.
       </p>
       <div className="mt-10">
-        <a href="mailto:amoghnagar12@gmail.com" className={`${theme.bg} text-white font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity shadow-lg ${theme.shadow} inline-flex items-center`}>
+        <a href="mailto:amoghnagarpersonal@gmail.com" className={`${theme.bg} text-white font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity shadow-lg ${theme.shadow} inline-flex items-center`}>
           Get In Touch <Icon path={ICONS.ARROW_RIGHT} className="w-5 h-5 ml-2" />
         </a>
       </div>
@@ -395,7 +395,7 @@ const Contact = () => (
       <p className="text-slate-300 mt-4 max-w-xl mx-auto">
         I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out if you want to chat!
       </p>
-      <a href="mailto:amoghnagar12@gmail.com" className={`mt-8 inline-block ${theme.bg} text-white font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity shadow-lg ${theme.shadowLg}`}>
+      <a href="mailto:amoghnagarpersonal@gmail.com" className={`mt-8 inline-block ${theme.bg} text-white font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity shadow-lg ${theme.shadowLg}`}>
         Say Hello
       </a>
     </div>
